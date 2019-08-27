@@ -15,7 +15,8 @@ library(datasauRus)
 
 ### Exercise 1
 
-(Type your answer to Exercise 1 here. This exercise does not require any R code.)
+*How many rows and how many columns does the datasaurus_dozen file have?*\
+A data frame with 1846 rows and 3 variables. The variables are **dataset**, **x**, and **y**.
 
 ### Exercise 2
 
