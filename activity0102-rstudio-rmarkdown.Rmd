@@ -20,7 +20,7 @@ A data frame with 1846 rows and 3 variables. The variables are **dataset**, **x*
 
 ### Exercise 2
 
-*Plot* **x** *vs.* **y** *for the  dino dataset. Then, calculate the correlation coefficient between* **x** *and* **y** *for this dataset.*
+*Plot* **x** *vs.* **y** *for the  dino dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
 
 First let's plot the data in the dino dataset:
 
@@ -38,23 +38,32 @@ And next calculate the correlation between `x` and `y` in this dataset:
 dino_data %>%
   summarize(r = cor(x, y))
 ```
+The correlation between `x` and `y` is -0.0645.\
 
 ### Exercise 3
 
-(Add code and narrative as needed. Note that the R chunks are labeled with `plot-star` and `cor-star` to provide spaces to place the code for plotting and calculating the correlation coefficient. To finish, clean up the narrative by removing these instructions.)
+*Plot* **x** *vs.* **y** *for the star dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
 
-Blah blah blah...
+First let's plot the data in the star dataset:
 
-```{r plot-star}
+
+```{r plot-star, fig.height=3, fig.width=6}
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
+
+ggplot(data = star_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
 ```
 
-I'm some text, you should replace me with more meaningful text...
+And next calculate the correlation between `x` and `y` in this dataset:
 
 ```{r cor-star}
-
+star_data %>%
+  summarize(r = cor(x, y))
 ```
 
+The correlation between `x` and `y` is -0.0645.\
 ### Exercise 4
 
 (Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
