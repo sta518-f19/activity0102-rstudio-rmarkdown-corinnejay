@@ -63,19 +63,32 @@ star_data %>%
   summarize(r = cor(x, y))
 ```
 
-The correlation between `x` and `y` is -0.0645.\
+The correlation between `x` and `y` is -0.0630. This correlation is closer to zero so it is a slightly worse correlation.\
+
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+*Plot* **x** *vs.* **y** *for the circle dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
 
-```{r}
+First let's plot the data in the circle dataset:
+
+
+```{r plot-circle, fig.height=3, fig.width=6}
+circle_data <- datasaurus_dozen %>%
+  filter(dataset == "circle")
+
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+  geom_point()
 
 ```
 
-```{r}
+And next calculate the correlation between `x` and `y` in this dataset:
 
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x, y))
 ```
 
+The correlation between `x` and `y` is -0.0630. This correlation is closer to zero so it is a slightly worse correlation.\
 ### Exercise 5
 
 (Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, green C+.)
