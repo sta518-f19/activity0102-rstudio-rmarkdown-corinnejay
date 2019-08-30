@@ -2,7 +2,11 @@
 title: "Activity 1.2 - RStudio and R Markdown"
 author: "Cori Jaskiewicz"
 date: "8/26/2019"
-output: html_document
+output: 
+  html_document: 
+    fig_height: 12
+    fig_width: 9
+    highlight: pygments
 ---
 
 ### Load packages
@@ -16,11 +20,11 @@ library(datasauRus)
 ### Exercise 1
 
 *How many rows and how many columns does the datasaurus_dozen file have?*\
-A data frame with 1846 rows and 3 variables. The variables are **dataset**, **x**, and **y**.
+The data frame has 1846 rows and 3 variables. The variables are **dataset**, **x**, and **y**.
 
 ### Exercise 2
 
-*Plot* **x** *vs.* **y** *for the  dino dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
+*Plot* `x` *vs.* `y` *for the  dino dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
 
 First let's plot the data in the dino dataset:
 
@@ -42,7 +46,7 @@ The correlation between `x` and `y` is -0.0645.\
 
 ### Exercise 3
 
-*Plot* **x** *vs.* **y** *for the star dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
+*Plot* `x` *vs.* `y` *for the star dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
 
 First let's plot the data in the star dataset:
 
@@ -67,7 +71,7 @@ The correlation between `x` and `y` is -0.0630. This correlation is closer to ze
 
 ### Exercise 4
 
-*Plot* **x** *vs.* **y** *for the circle dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
+*Plot* `x` *vs.* `y` *for the circle dataset. Then, calculate the correlation coefficient between* `x` *and* `y` *for this dataset.*
 
 First let's plot the data in the circle dataset:
 
@@ -94,10 +98,14 @@ The correlation between `x` and `y` is -0.0683. This correlation is further from
 
 First let's plot all the data at once:
 
-```{r plot-all, fig.height=9, fig.width=12}
+```{r plot-all}
 ggplot(data = datasaurus_dozen, aes(x = x, y = y, color = dataset)) +
   geom_point() + facet_wrap(~ dataset, ncol = 3) + theme(legend.position = "none")
+```
 
+Now using the group_by function, we can generate all the summary correlation coefficients.
+
+```{r cor-all}
 datasaurus_dozen %>%
   group_by(dataset) %>%
   summarize(r = cor(x, y)) %>%
